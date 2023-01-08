@@ -23,7 +23,7 @@
     <div class="card-body">
       <h4 class="card-title mb2">Reserve your sit now!</h4>
 
-      <%= form_with url: "#",data: { turbo: false } do |form| %>
+      <%= form_with url: :bookings, data: { turbo: false } do |form| %>
         <%= form.hidden_field :workshop_id, value: @workshop.id %>
 
         <div class ="form-group">
@@ -72,7 +72,7 @@
           <div class="col-lg-3">
             <div class ="form-group">
               <%= form.label :year, class: "mb-2 mt-2" %>
-              <%= form.number_field :exp_year, class: "form-control", required: true, min: 2022, max: 2026 %>
+              <%= form.number_field :exp_year, class: "form-control", required: true, min: 2025, max: 2030 %>
             </div>
           </div>
         </div>
