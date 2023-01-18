@@ -1,0 +1,18 @@
+<div class="col-lg-12">
+  <div class="card shadow mt-5 mb-5">
+    <div class="card-header">
+      <%= @workshop.name %>
+    </div>
+    <div class="card-body">
+      <h3><%= @customer.full_name %> / <%= @customer.email %></h3>
+      <h3>Booking details</h3>
+      <p><Strong>No of Tickets: </Strong><%= @booking.no_of_tickets %></p>
+      <p><Strong>Amount Paid: </Strong><%= @booking.amount_paid %></p>
+      <hr>
+
+      <h3>workshop schedule</h3>
+      <h4><span class="badge bg-primary"> <%= @workshop.total_duration %></span></h4>
+      <h4><span class="badge bg-primary"> <%= @workshop.daily_duration %></span></h4>
+    </div>
+  </div>
+</div>
