@@ -10,18 +10,24 @@ class BookingsController < ApplicationController
       @amount_to_be_paid = params[:no_of_tickets].to_i * @workshop.registration_fee
       @charge = @stripe_service.create_stripe_charge(@amount_to_be_paid, @stripe_customer.id, @card.id, @workshop)
 
-      @booking = @workshop.bookings.create(
+      booking = @workshop.bookings.create(
         customer_id: @customer.id,
         stripe_transaction_id: @charge.id,
         no_of_tickets: params[:no_of_tickets].to_i,
         amount_paid: @amount_to_be_paid
       )
 
-      BookingsMailer.booking_confirmation(@booking).deliver_now
+      BookingsMailer.booking_confirmation(booking).deliver_now
       redirect_to workshop_path(@workshop), notice: 'Your ticked has been booked'
     end
   rescue Stripe::StripeError => error
     redirect_to workshop_path(@workshop), alert: "#{error.message}"
+  end
+
+  def booking_details
+    @booking = Booking.find(params[:id])
+    @workshop = @booking.workshop
+    @customer = @booking.customer
   end
 
   private
