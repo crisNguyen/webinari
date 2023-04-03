@@ -21,7 +21,7 @@
 <div class="col-lg-4 mt-4">
   <div class = "card shadow mb-3">
     <div class="card-body">
-      <% if @workshop.upcoming_workshop?%>
+      <% if @workshop.upcoming_workshop? %>
         <h4 class="card-title mb2">Reserve your sit now!</h4>
 
         <%= form_with url: :bookings, data: { turbo: false } do |form| %>
