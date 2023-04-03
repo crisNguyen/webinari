@@ -1,0 +1,17 @@
+<h4>Your Booking Details</h4>
+<p class="lead">
+  <strong>Booking for:</strong>
+  <%= link_to @workshop_name, @workshop, target: '_blank' %>
+</p>
+<p class="lead">
+  <strong>Total Ticket Booked:</strong>
+  <%= @total_tickets %>
+</p>
+<p class="lead">
+  <strong>Amount Paid:</strong>
+  <%= @amount_paid %>
+</p>
+<p class="lead">
+  <strong>Booking Date:</strong>
+  <%= @booking_date %>
+</p>

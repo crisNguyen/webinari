@@ -10,7 +10,7 @@ class Workshop < ApplicationRecord
   validates :total_sits, :registration_fee, presence: true, numericality: true
   validates :end_date, comparison: { greater_than: :start_date }
 
-  scope :upcomming_workshops, -> { where('start_date > ?', Date.today) }
+  scope :upcoming_workshops, -> { where('start_date > ?', Date.today) }
   scope :past_workshops, -> { where('end_date < ?', Date.today) }
   # Ex:- scope :active, -> {where(:active => true)}
 
