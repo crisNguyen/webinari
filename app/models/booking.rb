@@ -1,11 +1,16 @@
 class Booking < ApplicationRecord
   belongs_to :customer
   belongs_to :workshop
+  has_many :refunds
 
   validates :order_number, presence: true, uniqueness: true
 
   before_validation :generate_order_number
   after_create :update_workshop_sit_count
+
+  def refundable?
+    workshop.start_date > Date.today
+  end
 
   private
 
